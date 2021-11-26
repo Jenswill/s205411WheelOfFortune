@@ -23,7 +23,7 @@ class gameFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.buttonTest)
         button.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToCategories)}
         if (currentCategory != null){
-            button.setText(currentCategory)
+            button.text = currentCategory
         }
 
         return view

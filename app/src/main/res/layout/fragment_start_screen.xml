@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- The following code is taken from
+ https://developer.android.com/guide/topics/ui/layout/relative
+and modified-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,29 +16,32 @@
     <Button
         android:id="@+id/buttonStartGame"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:text="@string/play_game" />
 
     <Button
         android:id="@+id/buttonHighscores"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60sp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
         android:layout_marginTop="160dp"
         android:text="@string/highscores" />
 
     <TextView
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
         android:text="@string/wheel_of_fortune"
+
         android:textSize="30sp"
-        android:layout_marginStart="65sp"
-        android:layout_marginTop="0dp"
+
 
         />
 
 
 
-</FrameLayout>
+</RelativeLayout>
