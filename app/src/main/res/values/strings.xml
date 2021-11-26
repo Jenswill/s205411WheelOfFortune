@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">s205411 Wheel Of Fortune</string>
+
+
+    <string-array name="Categories">
+        <item> Animals </item>
+        <item> test2 </item>
+    </string-array>
+
+    <string-array name="Animals">
+        <item> Elephant </item>
+    </string-array>
+
+    <string-array name="test2">
+        <item> Elephant </item>
+    </string-array>
+    <string-array name="HighscoreList">
+
+    </string-array>
+
+    /* Strings for xml files*/
+    <string name="wheel_of_fortune">Wheel of Fortune</string>
+    <string name="play_game">Play Game</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="highscores">Highscores</string>
+</resources>
