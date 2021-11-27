@@ -8,14 +8,26 @@ and modified-->
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gameFragment"
-    android:background="@color/purple_700">
+    android:background="@color/teal_200">
 
 
     <Button
-        android:id="@+id/buttonTest"
+        android:id="@+id/giveUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="last page" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="give up" />
+
+    <TextView
+
+        android:id="@+id/categoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textSize="30sp"
+
+        />
 
 </RelativeLayout>
