@@ -26,11 +26,8 @@ class highscoresFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_highscores, container, false)
 
         view.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToStartScreen)}
-        //val recyclerView = view.findViewById<RecyclerView>(R.id.HighScoreView)
-        //recyclerView.adapter = context?.resources?.getStringArray(R.array.Categories)
-        context?.resources?.getStringArray(R.array.HighscoreList)
-        currentCategory  = "Animals"
-        //funtest(!!currentCategory)
+
+
         return view
 
     }

@@ -22,27 +22,30 @@ class gameFragment : Fragment() {
         // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-San
         val view : View =  inflater.inflate(R.layout.fragment_game, container, false)
-        val button = view.findViewById<Button>(R.id.giveUpButton)
+        val giveUpButton = view.findViewById<Button>(R.id.giveUpButton)
         val category = view.findViewById<TextView>(R.id.categoryTextView)
-        button.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToCategories)}
+        giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
 
+        // Setting string value in the textview to show chosen category
         if (currentCategory != null){
             if (currentCategory == "Random"){
                 val categories = context?.resources?.getStringArray(R.array.Categories)
-                currentCategory = getRandomString(categories as Array<String>)
-
+                currentCategory = getRandomString(1,categories as Array<String>)
             }
-
             category.text = "category: " + currentCategory
-
         }
+
+
+
+
+
 
         return view
     }
     // This method is made with code taken from
     // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/
-    private fun getRandomString(StringArray: Array<String>): String{
-        val randomNumber = Random.nextInt(1,StringArray.size)
+    private fun getRandomString(start : Int, StringArray: Array<String>): String{
+        val randomNumber = Random.nextInt(start,StringArray.size)
         return StringArray[randomNumber]
     }
 

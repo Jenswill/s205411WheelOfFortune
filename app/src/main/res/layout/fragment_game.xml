@@ -7,6 +7,7 @@ and modified-->
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".gameFragment"
     android:background="@color/teal_200">
 
@@ -15,19 +16,82 @@ and modified-->
         android:id="@+id/giveUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:text="give up" />
+
+    <TextView
+
+        android:id="@+id/pointsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/points"
+        android:text="Points: "
+        android:textSize="30sp"
+
+        />
 
     <TextView
 
         android:id="@+id/categoryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/points"
+        android:layout_alignParentEnd="true"
         android:text=""
         android:textSize="30sp"
 
         />
+    <TextView
+
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="0"
+        android:textSize="30sp"
+
+        />
+
+    <TextView
+
+        android:id="@+id/Lives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/LivesTextView"
+        android:layout_below="@id/letters"
+        android:text="5"
+        android:textSize="30sp"
+
+
+
+        />
+
+    <TextView
+
+        android:id="@+id/LivesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/letters"
+        android:layout_toEndOf="@id/giveUpButton"
+        android:text="Lives left:   "
+
+
+        android:textSize="30sp"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/letters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="horizontal"
+        android:layout_above="@id/giveUpButton"
+        >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

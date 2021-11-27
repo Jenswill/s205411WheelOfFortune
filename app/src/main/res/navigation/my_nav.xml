@@ -22,6 +22,9 @@
         <action
             android:id="@+id/navigateToCategories"
             app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/navigateToMainMenu"
+            app:destination="@id/startScreen" />
     </fragment>
 
     <fragment
