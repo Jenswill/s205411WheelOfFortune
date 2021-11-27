@@ -26,11 +26,9 @@ class categoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // The following code is taken from the following sources and modified:
-        // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-San
         val view = inflater.inflate(R.layout.fragment_categories, container, false)
-        val button = view.findViewById<Button>(R.id.buttonTest)
-        button.setOnClickListener{Navigation.findNavController(view).navigate(R.id.navigateToGame)}
+
 
         // The folloing code is taken from the provided code in the slides for week 5 page 31, and modified
         val categoryString = context?.resources?.getStringArray(R.array.Categories)

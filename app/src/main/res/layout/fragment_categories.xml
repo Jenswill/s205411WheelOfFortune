@@ -11,12 +11,14 @@ and modified-->
     android:background="@color/teal_200">
 
 
-    <Button
-        android:id="@+id/buttonTest"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/next_page" />
+        android:text="@string/choose_category"
+        android:textSize="30sp"
+        />
 
     <!-- The code for the recylcerview is taken from
  the provided code in the slides for week 5 page 23
@@ -25,7 +27,7 @@ and modified-->
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonTest"
+        android:layout_below="@id/textView"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
         />

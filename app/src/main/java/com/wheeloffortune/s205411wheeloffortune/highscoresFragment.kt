@@ -32,11 +32,23 @@ class highscoresFragment : Fragment() {
         currentCategory  = "Animals"
         //funtest(!!currentCategory)
         return view
+
     }
 
     // https://discuss.kotlinlang.org/t/vararg-vs-array-parameter/4068/9
-    fun funtest(vararg test2: String){
-        context?.resources?.getStringArray(R.array.test2)
+
+
+
+    //made by code taken and from
+    //https://stackoverflow.com/questions/42211527/getpackagename-in-fragment
+    //https://stackoverflow.com/questions/42524916/is-it-possible-to-handle-r-array-string-array-name-through-a-string-variable-in
+    //and modified
+    fun funtest(test: String){
+
+        val id : Int? = context?.resources?.getIdentifier(test,"array",context?.packageName)
+        if (id != null) {
+            context?.resources?.getStringArray(id)
+        }
     }
 
 }
