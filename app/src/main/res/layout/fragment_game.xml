@@ -88,12 +88,13 @@ and modified-->
         android:layout_height="wrap_content"
         android:layout_above="@id/giveUpButton"
         android:orientation="horizontal"
-
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-
         >
-
-
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+
 
 </RelativeLayout>

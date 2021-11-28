@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.CategoryAdapter
 import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.LetterAdapter
@@ -45,18 +47,24 @@ class gameFragment : Fragment() {
 
         var letterItemArray = ArrayList<StringItem>()
 
+
+
         //The following for loop is made by using the code on the web-side
         // https://kotlinlang.org/docs/control-flow.html#for-loops
         if (Letter != null) {
             for (i in Letter.indices){
                 letterItemArray.add(i, StringItem(Letter[i]))
+
             }
         }
 
 
         val recyclerView: RecyclerView = view.findViewById(R.id.letters)
+        // To change the recyclerviews appearance, I've used code from
+        // https://stackoverflow.com/questions/39443986/make-a-multiline-recyclerview
+        // and modified it
+        recyclerView.layoutManager = GridLayoutManager(context, 7)
         recyclerView.adapter = LetterAdapter(letterItemArray)
-
 
 
         return view
