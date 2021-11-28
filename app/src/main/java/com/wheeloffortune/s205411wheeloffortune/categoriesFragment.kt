@@ -5,12 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.CategoryAdapter
-import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.CategoryItem
+import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.StringItem
 
 
 /**
@@ -33,13 +30,13 @@ class categoriesFragment : Fragment() {
         // The folloing code is taken from the provided code in the slides for week 5 page 31, and modified
         val categoryString = context?.resources?.getStringArray(R.array.Categories)
 
-        var categoryItemArray = ArrayList<CategoryItem>()
+        var categoryItemArray = ArrayList<StringItem>()
 
         //The following for loop is made by using the code on the web-side
         // https://kotlinlang.org/docs/control-flow.html#for-loops
         if (categoryString != null) {
             for (i in categoryString.indices){
-                categoryItemArray.add(i,CategoryItem(categoryString[i]))
+                categoryItemArray.add(i,StringItem(categoryString[i]))
             }
         }
 

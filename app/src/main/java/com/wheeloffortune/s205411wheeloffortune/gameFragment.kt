@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
+import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.CategoryAdapter
+import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.LetterAdapter
+import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.StringItem
 import kotlin.random.Random
 
 
@@ -34,9 +38,24 @@ class gameFragment : Fragment() {
             }
             category.text = "category: " + currentCategory
         }
+        // Setting up RecyclerView
+        // The folloing code is taken from the provided code in the slides for week 5 page 31, and modified
+        val Letter = context?.resources?.getStringArray(R.array.Letters)
 
 
+        var letterItemArray = ArrayList<StringItem>()
 
+        //The following for loop is made by using the code on the web-side
+        // https://kotlinlang.org/docs/control-flow.html#for-loops
+        if (Letter != null) {
+            for (i in Letter.indices){
+                letterItemArray.add(i, StringItem(Letter[i]))
+            }
+        }
+
+
+        val recyclerView: RecyclerView = view.findViewById(R.id.letters)
+        recyclerView.adapter = LetterAdapter(letterItemArray)
 
 
 

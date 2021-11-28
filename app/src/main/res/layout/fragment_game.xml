@@ -86,9 +86,11 @@ and modified-->
         android:id="@+id/letters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:orientation="horizontal"
         android:layout_above="@id/giveUpButton"
+        android:orientation="horizontal"
+
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+
         >
 
 
