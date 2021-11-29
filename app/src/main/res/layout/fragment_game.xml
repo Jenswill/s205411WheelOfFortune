@@ -12,6 +12,17 @@ and modified-->
     android:background="@color/teal_200">
 
 
+    <TextView
+
+        android:id="@+id/wordString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/categoryTextView"
+        android:textSize="40sp"
+
+        />
+
     <Button
         android:id="@+id/giveUpButton"
         android:layout_width="wrap_content"

@@ -27,12 +27,12 @@ class CategoryAdapter(private val categories: ArrayList<StringItem>) : RecyclerV
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val button : Button = holder.view.findViewById(R.id.Button)
-       button.text = categories[position].category
+       button.text = categories[position].stringItem
         // The code for the clicklistener is taken from the following sources and modified:
         // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-Sa
        button.setOnClickListener {
-            currentCategory = categories[position].category
+            currentCategory = categories[position].stringItem
           Navigation.findNavController(holder.view).navigate(R.id.navigateToGame)
         }
 

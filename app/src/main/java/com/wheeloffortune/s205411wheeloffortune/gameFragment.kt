@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.CategoryAdapter
 import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.LetterAdapter
 import com.wheeloffortune.s205411wheeloffortune.RecyclerViewItems.StringItem
 import kotlin.random.Random
@@ -28,23 +26,102 @@ class gameFragment : Fragment() {
         // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-San
         val view : View =  inflater.inflate(R.layout.fragment_game, container, false)
-        val giveUpButton = view.findViewById<Button>(R.id.giveUpButton)
-        val category = view.findViewById<TextView>(R.id.categoryTextView)
-        giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
 
+        //initializes giveUpButton and specifies where it should navigate to
+        val giveUpButton = view.findViewById<Button>(R.id.giveUpButton)
+        giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
+        // initializes category textView
+        initCategory(view)
+
+        //Choses a random word within category
+        wordToBeGuessed = getWordToBeGuessed()
+
+        //Hides word from player
+        hideWord(view)
+
+
+
+        // defines recyclerview
+        val recyclerView: RecyclerView = view.findViewById(R.id.letters)
+        // initializes recyclerview to show letters which can be guessed
+        initLetters(recyclerView)
+
+
+
+        return view
+    }
+
+    // This method is made with code taken from
+    // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/
+    private fun getRandomString(start : Int, StringArray: Array<String>): String{
+        //generetes a random number within boundaries
+        val randomNumber = Random.nextInt(start,StringArray.size)
+        //Returns random string from stringarray
+        return StringArray[randomNumber]
+    }
+
+    fun guessLetter(letter : String){
+        // defines textview
+        val textView = view?.findViewById<TextView>(R.id.wordString)
+
+
+        val answerArray = wordToBeGuessed?.split("")
+
+        if(wordToBeGuessed?.contains(letter) == true){
+            //getting string with all currently guessed letters
+            val hiddenString =  textView?.text as String
+            //Removes spaces from the String
+            // Method .replace found at https://stackoverflow.com/questions/60028103/how-to-remove-all-the-whitespaces-from-a-string-in-kotlin
+            val hiddenStringArray = hiddenString.replace(" ","").split("")
+
+            var newString  =  ""
+
+
+            if (answerArray != null) {
+                for (i in answerArray.indices){
+                        if (answerArray[i] != ""){
+                            if (answerArray[i].equals(letter)){
+                                newString += (letter + " ")
+                            }else{
+                                newString += (hiddenStringArray[i] + " ")
+                            }
+                        }
+
+
+                }
+
+            }
+
+            textView.text = newString
+
+        }
+
+
+
+    }
+
+    private fun initCategory(view: View){
+        //This is a function to setup the textview 'categoryTextView' to show the current category
+        val category = view.findViewById<TextView>(R.id.categoryTextView)
         // Setting string value in the textview to show chosen category
         if (currentCategory != null){
+            //Choses random category if 'Random' is chosen
             if (currentCategory == "Random"){
                 val categories = context?.resources?.getStringArray(R.array.Categories)
                 currentCategory = getRandomString(1,categories as Array<String>)
             }
-            category.text = "category: " + currentCategory
+            // Writes category in category textView
+            category?.text = "category: " + currentCategory
+
         }
+    }
+
+    private fun initLetters(recyclerView: RecyclerView){
         // Setting up RecyclerView
-        // The folloing code is taken from the provided code in the slides for week 5 page 31, and modified
+        // The following code is taken from the provided code in the slides for week 5 page 31, and modified
         val Letter = context?.resources?.getStringArray(R.array.Letters)
 
-
+        //Now a list of type StringItem is made
         var letterItemArray = ArrayList<StringItem>()
 
 
@@ -53,27 +130,50 @@ class gameFragment : Fragment() {
         // https://kotlinlang.org/docs/control-flow.html#for-loops
         if (Letter != null) {
             for (i in Letter.indices){
+                //Here the items for the recyclerview is made and added to the list
                 letterItemArray.add(i, StringItem(Letter[i]))
 
             }
         }
 
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.letters)
         // To change the recyclerviews appearance, I've used code from
         // https://stackoverflow.com/questions/39443986/make-a-multiline-recyclerview
         // and modified it
         recyclerView.layoutManager = GridLayoutManager(context, 7)
-        recyclerView.adapter = LetterAdapter(letterItemArray)
-
-
-        return view
+        recyclerView.adapter = LetterAdapter(this,letterItemArray)
     }
-    // This method is made with code taken from
-    // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/
-    private fun getRandomString(start : Int, StringArray: Array<String>): String{
-        val randomNumber = Random.nextInt(start,StringArray.size)
-        return StringArray[randomNumber]
+
+    private  fun getAllWords(category: String): Array<String> {
+        val allWords: Array<String>
+        //made by code taken and from
+        //https://stackoverflow.com/questions/42211527/getpackagename-in-fragment
+        //https://stackoverflow.com/questions/42524916/is-it-possible-to-handle-r-array-string-array-name-through-a-string-variable-in
+        //and modified
+        val id : Int? = context?.resources?.getIdentifier(category,"array",context?.packageName)
+        allWords = context?.resources?.getStringArray(id!!) as Array<String>
+        return allWords
+
+    }
+
+    private fun getWordToBeGuessed(): String{
+
+        val allWords = getAllWords(currentCategory!!)
+
+        return getRandomString(0,allWords)
+    }
+
+    private fun hideWord(view :View){
+        var hiddenString: String = ""
+
+        for (i in wordToBeGuessed?.split("")!!.indices){
+            if (wordToBeGuessed?.split("")!![i] != ""){
+                hiddenString += "_ "
+            }
+
+        }
+
+        view.findViewById<TextView>(R.id.wordString)?.text = hiddenString
     }
 
 }
