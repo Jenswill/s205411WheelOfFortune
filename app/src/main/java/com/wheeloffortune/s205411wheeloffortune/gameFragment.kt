@@ -30,14 +30,29 @@ class gameFragment : Fragment() {
         //initializes giveUpButton and specifies where it should navigate to
         val giveUpButton = view.findViewById<Button>(R.id.giveUpButton)
         giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
+        //sets gamemode to spinning phase (0 = spinning phase, 1 = guessing phase)
+        gameMode = 0
         // initializes category textView
         initCategory(view)
 
-        //Choses a random word within category
+        //Chooses a random word within category
         wordToBeGuessed = getWordToBeGuessed()
 
         //Hides word from player
         hideWord(view)
+
+
+
+        //setting up spin button
+        view.findViewById<Button>(R.id.spinButton).setOnClickListener{
+            if (gameMode == 0){
+                //Getting a random string from saved StringArray 'Wheel'
+                view.findViewById<TextView>(R.id.wheelView).text =
+                    getRandomString(0,context?.resources?.getStringArray(R.array.Wheel) as Array<String>)
+                //Executes game logic for the wheel
+                wheelLogic()
+            }
+        }
 
 
 
@@ -73,15 +88,18 @@ class gameFragment : Fragment() {
             //Removes spaces from the String
             // Method .replace found at https://stackoverflow.com/questions/60028103/how-to-remove-all-the-whitespaces-from-a-string-in-kotlin
             val hiddenStringArray = hiddenString.replace(" ","").split("")
+            var pts : Int = 0
 
             var newString  =  ""
 
-
+            //Checks if the letter appears in the word
             if (answerArray != null) {
                 for (i in answerArray.indices){
                         if (answerArray[i] != ""){
                             if (answerArray[i].equals(letter)){
                                 newString += (letter + " ")
+                                //Calculating how many points the player gets
+                                pts += view?.findViewById<TextView>(R.id.wheelView)?.text.toString().toInt()
                             }else{
                                 newString += (hiddenStringArray[i] + " ")
                             }
@@ -89,15 +107,24 @@ class gameFragment : Fragment() {
 
 
                 }
+                //Revealing the letter
+                textView.text = newString
+                // updating how many points the player have
+                val ptsView : TextView? = view?.findViewById(R.id.points)
+                ptsView?.text = (ptsView?.text.toString().toInt() + pts).toString()
 
             }
 
-            textView.text = newString
 
+        }else{
+            //Reduces number of lives by 1
+            val lives : TextView? = view?.findViewById(R.id.Lives)
+            lives?.text = (lives?.text.toString().toInt() - 1).toString()
+            //TODO: game lost?
         }
 
 
-
+        gameMode = 0
     }
 
     private fun initCategory(view: View){
@@ -174,6 +201,28 @@ class gameFragment : Fragment() {
         }
 
         view.findViewById<TextView>(R.id.wordString)?.text = hiddenString
+    }
+
+    fun wheelLogic(){
+        val text : String = view?.findViewById<TextView>(R.id.wheelView)?.text.toString()
+
+        if(text == "extra turn"){
+            //Increases the number of lives by 1
+            val lives : TextView? = view?.findViewById(R.id.Lives)
+            lives?.text = (lives?.text.toString().toInt() + 1).toString()
+        }else if(text == "miss turn"){
+            //Reduces the number of lives by 1
+            val lives : TextView? = view?.findViewById(R.id.Lives)
+            lives?.text = (lives?.text.toString().toInt() - 1).toString()
+            //TODO: game lost?
+        }else if (text == "bankrupt"){
+            // sets players points to 0
+            view?.findViewById<TextView>(R.id.points)?.text = "0"
+
+        }else{
+            gameMode = 1
+        }
+
     }
 
 }

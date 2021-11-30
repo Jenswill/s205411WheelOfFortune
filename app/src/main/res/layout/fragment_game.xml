@@ -53,6 +53,7 @@ and modified-->
         android:textSize="30sp"
 
         />
+
     <TextView
 
         android:id="@+id/points"
@@ -86,7 +87,7 @@ and modified-->
         android:layout_height="wrap_content"
         android:layout_below="@id/letters"
         android:layout_toEndOf="@id/giveUpButton"
-        android:text="Lives left:   "
+        android:text=" Lives left:   "
 
 
         android:textSize="30sp"
@@ -103,9 +104,22 @@ and modified-->
         >
     </androidx.recyclerview.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/wheelView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/wordString"
+        android:textSize="30sp"
 
+        />
 
-
+    <Button
+        android:id="@+id/spinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wheelView"
+        android:text="Spin!" />
 
 
 </RelativeLayout>

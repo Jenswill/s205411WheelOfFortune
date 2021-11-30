@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.wheeloffortune.s205411wheeloffortune.R
 import com.wheeloffortune.s205411wheeloffortune.gameFragment
+import com.wheeloffortune.s205411wheeloffortune.gameMode
 
 /*All of the following code is taken from week 5 slide 30 and modified*/
 class LetterAdapter(gamefragment: gameFragment, private val letters: ArrayList<StringItem>) : RecyclerView.Adapter<LetterAdapter.ViewHolder>()
@@ -35,11 +36,12 @@ class LetterAdapter(gamefragment: gameFragment, private val letters: ArrayList<S
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-Sa
         // https://stackoverflow.com/questions/61252600/delete-item-from-recyclerview-on-button-click-kotlin-mvvm-firestore
         button.setOnClickListener {
+            if (gameMode == 1){
+                fragment.guessLetter(letters[position].stringItem)
+                letters.removeAt(position)
+                notifyDataSetChanged()
+            }
 
-            fragment.guessLetter(letters[position].stringItem)
-            letters.removeAt(position)
-
-            notifyDataSetChanged()
         }
 
     }

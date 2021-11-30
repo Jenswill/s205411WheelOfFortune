@@ -50,6 +50,23 @@
 
     </string-array>
 
+    <string-array name="Wheel">
+        <item> extra turn </item>
+        <item> miss turn </item>
+        <item> bankrupt </item>
+        <item> 1000 </item>
+        <item> 900 </item>
+        <item> 800 </item>
+        <item> 700 </item>
+        <item> 600 </item>
+        <item> 500 </item>
+        <item> 400 </item>
+        <item> 300 </item>
+        <item> 200 </item>
+        <item> 100 </item>
+
+    </string-array>
+
     /* Strings for xml files*/
     <string name="wheel_of_fortune">Wheel of Fortune</string>
     <string name="play_game">Play Game</string>
