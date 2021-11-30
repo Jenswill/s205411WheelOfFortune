@@ -121,5 +121,16 @@ and modified-->
         android:layout_below="@+id/wheelView"
         android:text="Spin!" />
 
+    <TextView
+        android:id="@+id/gamePhase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinButton"
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:text="TextView"
+
+        />
+
 
 </RelativeLayout>
