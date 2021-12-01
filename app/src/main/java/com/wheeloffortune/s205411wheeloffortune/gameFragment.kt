@@ -118,6 +118,14 @@ class gameFragment : Fragment() {
                 val ptsView : TextView? = view?.findViewById(R.id.points)
                 ptsView?.text = (ptsView?.text.toString().toInt() + pts).toString()
 
+                //Checking if the player won the game
+                if (!newString.contains("_")){
+                    //Sets players final number of points
+                    points = ptsView?.text.toString()
+                    //Navigates to GameLostFragment
+                    view?.let { Navigation.findNavController(it).navigate(R.id.gameWonFragment) }
+                }
+
             }
 
 
@@ -127,6 +135,7 @@ class gameFragment : Fragment() {
             lives?.text = (lives?.text.toString().toInt() - 1).toString()
             //checks if game is lost
             if (lives?.text.toString() == "0"){
+                //Navigates to GameLostFragment
                 view?.let { Navigation.findNavController(it).navigate(R.id.navigateToGameLost) }
             }
         }
@@ -222,7 +231,11 @@ class gameFragment : Fragment() {
             //Reduces the number of lives by 1
             val lives : TextView? = view?.findViewById(R.id.Lives)
             lives?.text = (lives?.text.toString().toInt() - 1).toString()
-            //TODO: game lost?
+            //checks if game is lost
+            if (lives?.text.toString() == "0"){
+                //Navigates to GameLostFragment
+                view?.let { Navigation.findNavController(it).navigate(R.id.navigateToGameLost) }
+            }
         }else if (text == "bankrupt"){
             // sets players points to 0
             view?.findViewById<TextView>(R.id.points)?.text = "0"
