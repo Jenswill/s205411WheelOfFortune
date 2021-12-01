@@ -22,6 +22,7 @@ class gameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
+
     ): View? {
         // The following code is taken from the following sources and modified:
         // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
@@ -30,7 +31,7 @@ class gameFragment : Fragment() {
 
         //initializes giveUpButton and specifies where it should navigate to
         val giveUpButton = view.findViewById<Button>(R.id.giveUpButton)
-        giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
+        giveUpButton.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToGameLost)}
         //sets gamemode to spinning phase (0 = spinning phase, 1 = guessing phase)
         gameMode = 0
         // initializes gamePhase textview
@@ -124,7 +125,10 @@ class gameFragment : Fragment() {
             //Reduces number of lives by 1
             val lives : TextView? = view?.findViewById(R.id.Lives)
             lives?.text = (lives?.text.toString().toInt() - 1).toString()
-            //TODO: game lost?
+            //checks if game is lost
+            if (lives?.text.toString() == "0"){
+                view?.let { Navigation.findNavController(it).navigate(R.id.navigateToGameLost) }
+            }
         }
 
         view?.findViewById<TextView>(R.id.gamePhase)?.text = "Spin the wheel!"

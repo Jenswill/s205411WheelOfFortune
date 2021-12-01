@@ -127,10 +127,9 @@ and modified-->
         android:layout_height="wrap_content"
         android:layout_below="@id/spinButton"
         android:layout_centerInParent="true"
-        android:textSize="30sp"
         android:text="TextView"
 
-        />
+        android:textSize="30sp" />
 
 
 </RelativeLayout>

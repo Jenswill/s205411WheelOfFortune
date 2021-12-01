@@ -25,6 +25,9 @@
         <action
             android:id="@+id/navigateToMainMenu"
             app:destination="@id/startScreen" />
+        <action
+            android:id="@+id/navigateToGameLost"
+            app:destination="@id/gameLostFragment" />
     </fragment>
 
     <fragment
@@ -47,5 +50,17 @@
         <action
             android:id="@+id/navigateToStartScreen"
             app:destination="@id/startScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameLostFragment"
+        android:name="com.wheeloffortune.s205411wheeloffortune.GameLostFragment"
+        android:label="fragment_game_lost"
+        tools:layout="@layout/fragment_game_lost" >
+        <action
+            android:id="@+id/navigateToMainMenu"
+            app:destination="@id/startScreen" />
+        <action
+            android:id="@+id/navigateToCategories"
+            app:destination="@id/categoriesFragment" />
     </fragment>
 </navigation>
