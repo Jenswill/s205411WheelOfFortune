@@ -211,6 +211,7 @@ class gameFragment : Fragment() {
         var hiddenString: String = ""
 
         for (i in wordToBeGuessed?.split("")!!.indices){
+            // Creates a string containing an "_ " for each letter in the hidden word
             if (wordToBeGuessed?.split("")!![i] != ""){
                 hiddenString += "_ "
             }

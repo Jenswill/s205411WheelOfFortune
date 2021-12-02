@@ -31,6 +31,7 @@ class CategoryAdapter(private val categories: ArrayList<StringItem>) : RecyclerV
         // The code for the clicklistener is taken from the following sources and modified:
         // https://stackoverflow.com/questions/56749461/how-to-set-an-onclicklistener-to-a-button-in-kotlin/56749553
         // https://www.youtube.com/watch?v=DI0NIk-7cz8&t=619s&ab_channel=Stevdza-Sa
+        // https://stackoverflow.com/questions/61252600/delete-item-from-recyclerview-on-button-click-kotlin-mvvm-firestore
        button.setOnClickListener {
             currentCategory = categories[position].stringItem
           Navigation.findNavController(holder.view).navigate(R.id.navigateToGame)

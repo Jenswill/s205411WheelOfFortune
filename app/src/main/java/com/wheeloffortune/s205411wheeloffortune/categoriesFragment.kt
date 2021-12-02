@@ -40,8 +40,9 @@ class categoriesFragment : Fragment() {
             }
         }
 
-
+        //defines recyclerview
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        //adds newly created list of StringItems
         recyclerView.adapter = CategoryAdapter(categoryItemArray)
         return view
     }

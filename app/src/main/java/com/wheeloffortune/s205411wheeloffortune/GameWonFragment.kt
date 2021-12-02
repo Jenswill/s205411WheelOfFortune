@@ -18,7 +18,7 @@ class GameWonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-       val view : View = inflater.inflate(R.layout.fragment_game_won, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_game_won, container, false)
         //Sets Main Menu button to navigate to StartScreen fragment
         view.findViewById<Button>(R.id.MainMenuButton).setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToMainMenu)}
         // Sets play again button to navigate to categoriesFragment
