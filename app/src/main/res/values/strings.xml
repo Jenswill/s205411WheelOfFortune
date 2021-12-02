@@ -102,16 +102,4 @@
         and win by guessing the hidden word.
 
     </string>
-    <string name="whengamestart">
-        When the game is started, the randomly chosen word
-        will be hidden, so that each letter is represented by
-        a line, "_". The game will then tell you to spin the
-        wheel. After the wheel is spun, the game will either tell
-        you to spin the wheel or guess a letter.
-        When a letter is guessed, you will receive points equal
-        to the number the wheel landed on times number of times
-        the letter is used in the word. If the word does not
-        contain the letter, you lose a life. You lose by losing all your lives
-        and win by guessing the hidden word.
-    </string>
 </resources>
