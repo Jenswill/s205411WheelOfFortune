@@ -71,7 +71,30 @@
     <string name="wheel_of_fortune">Wheel of Fortune</string>
     <string name="play_game">Play Game</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="highscores">Highscores</string>
     <string name="next_page">next page</string>
     <string name="choose_category">Choose Category</string>
+    <string name="howtoplay">
+        When starting a game, you must chose a category from which you would like to guess a word.
+        After a category is chosen, the game randomly chose a word within that category, and hides it from you.
+        Each letter in the word is represented by a line.\n
+        The game tell you to spin the wheel, until the wheel lands on a number. When landed on a number, you can guess on a letter.
+        When a letter is guessed, you will receive points equal
+        to the number the wheel landed on times number of times
+        the letter is used in the word. If the word does not
+        contain the letter, you lose a life. You lose by losing all your lives
+        and win by guessing the hidden word.
+
+    </string>
+    <string name="whengamestart">
+        When the game is started, the randomly chosen word
+        will be hidden, so that each letter is represented by
+        a line, "_". The game will then tell you to spin the
+        wheel. After the wheel is spun, the game will either tell
+        you to spin the wheel or guess a letter.
+        When a letter is guessed, you will receive points equal
+        to the number the wheel landed on times number of times
+        the letter is used in the word. If the word does not
+        contain the letter, you lose a life. You lose by losing all your lives
+        and win by guessing the hidden word.
+    </string>
 </resources>

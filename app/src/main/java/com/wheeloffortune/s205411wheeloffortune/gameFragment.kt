@@ -74,9 +74,9 @@ class gameFragment : Fragment() {
     // This method is made with code taken from
     // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.random/-random/
     private fun getRandomString(start : Int, StringArray: Array<String>): String{
-        //generetes a random number within boundaries
+        //generates a random number within boundaries
         val randomNumber = Random.nextInt(start,StringArray.size)
-        //Returns random string from stringarray
+        //Returns random string from string array
         return StringArray[randomNumber]
     }
 

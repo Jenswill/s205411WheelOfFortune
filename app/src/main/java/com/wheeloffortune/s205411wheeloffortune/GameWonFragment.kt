@@ -25,7 +25,6 @@ class GameWonFragment : Fragment() {
         view.findViewById<Button>(R.id.PlayAgainButton).setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToCategories)}
 
         // Sets screen text
-
         view.findViewById<TextView>(R.id.WordToBeGuessed).text = "You have earned " + points + " points while guessing the word " + wordToBeGuessed
 
         return view

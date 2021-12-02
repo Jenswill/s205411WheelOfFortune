@@ -25,7 +25,6 @@ class GameLostFragment : Fragment() {
         view.findViewById<Button>(R.id.PlayAgainButton).setOnClickListener{Navigation.findNavController(view).navigate(R.id.navigateToCategories)}
 
         // Sets screen text
-
         view.findViewById<TextView>(R.id.WordToBeGuessed).text = "The hidden word were: " + wordToBeGuessed
 
         return view

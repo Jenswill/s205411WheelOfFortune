@@ -23,8 +23,8 @@ class StartScreen : Fragment() {
         val view = inflater.inflate(R.layout.fragment_start_screen, container, false)
         val buttonStartGame : Button = view.findViewById(R.id.buttonStartGame)
         buttonStartGame.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToCategories)}
-        val buttonHighscores : Button = view.findViewById(R.id.buttonHighscores)
-        buttonHighscores.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.navigateToHighscores)}
+        val buttonHowToPlay : Button = view.findViewById(R.id.buttonHighscores)
+        buttonHowToPlay.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.howToPlayFragment)}
 
         return view
     }
