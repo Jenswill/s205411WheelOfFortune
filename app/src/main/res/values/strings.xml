@@ -32,7 +32,8 @@
     <string-array name="Categories">
         <item> Random </item>
         <item> Animals </item>
-        <item> test2 </item>
+        <item> Fruit  </item>
+        <item> Vegetables  </item>
     </string-array>
 
     <string-array name="Animals">
@@ -40,14 +41,30 @@
         <item> MONKEY </item>
         <item> PIGEON </item>
         <item> SQUIRREL </item>
+        <item> CHEETAH </item>
+        <item> PENGUIN </item>
+        <item> DOLPHIN </item>
     </string-array>
 
-    <string-array name="test2">
-        <item> CAKE </item>
-        <item>  </item>
-    </string-array>
-    <string-array name="HighscoreList">
+    <string-array name="Fruit">
+        <item>   APRICOTS   </item>
+        <item>   BLUEBERRY </item>
+        <item>   BANANA </item>
+        <item>   AVOCADO </item>
+        <item>  TANGERINE  </item>
+        <item>  CHERRY  </item>
+        <item>   KIWIFRUIT </item>
+        <item>   PINEAPPLE   </item>
 
+    </string-array>
+    <string-array name="Vegetables">
+        <item>  ARTICHOKE  </item>
+        <item>  CARROT  </item>
+        <item>  HORSERADISH  </item>
+        <item>  ASPARAGUS  </item>
+        <item>  CROOKNECK  </item>
+        <item>  ZUCCHINI  </item>
+        <item>  PUMPKIN  </item>
     </string-array>
 
     <string-array name="Wheel">
