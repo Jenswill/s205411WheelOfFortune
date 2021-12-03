@@ -8,7 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.wheeloffortune.s205411wheeloffortune"
-        minSdk 21
+        minSdk 24       //Found this by using https://stackoverflow.com/questions/5427195/how-to-change-the-minsdkversion-of-a-project
+                        //as source
         targetSdk 31
         versionCode 1
         versionName "1.0"
