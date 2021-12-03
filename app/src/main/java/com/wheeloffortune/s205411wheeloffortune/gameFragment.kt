@@ -87,6 +87,7 @@ class gameFragment : Fragment() {
 
         val answerArray = wordToBeGuessed?.split("")
 
+        //checks if the hidden word contains the guessed letter
         if(wordToBeGuessed?.contains(letter) == true){
             //getting string with all currently guessed letters
             val hiddenString =  textView?.text as String
@@ -103,7 +104,7 @@ class gameFragment : Fragment() {
                         if (answerArray[i] != ""){
                             if (answerArray[i].equals(letter)){
                                 newString += (letter + " ")
-                                //Calculating how many points the player gets
+                                //Calculating how many points the player get
                                 pts += view?.findViewById<TextView>(R.id.wheelView)?.text.toString().toInt()
                             }else{
                                 newString += (hiddenStringArray[i] + " ")
@@ -211,19 +212,21 @@ class gameFragment : Fragment() {
         var hiddenString: String = ""
 
         for (i in wordToBeGuessed?.split("")!!.indices){
-            // Creates a string containing an "_ " for each letter in the hidden word
+            // Creates a string containing a "_ " for each letter in the hidden word
             if (wordToBeGuessed?.split("")!![i] != ""){
                 hiddenString += "_ "
             }
 
         }
-
+        // Shows the hidden string on the screen
         view.findViewById<TextView>(R.id.wordString)?.text = hiddenString
     }
 
     private fun wheelLogic(){
+        //Defines what the wheel landed on
         val text : String = view?.findViewById<TextView>(R.id.wheelView)?.text.toString()
 
+        // Implements the rules for each possible outcome
         if(text == "extra turn"){
             //Increases the number of lives by 1
             val lives : TextView? = view?.findViewById(R.id.Lives)
@@ -242,6 +245,7 @@ class gameFragment : Fragment() {
             view?.findViewById<TextView>(R.id.points)?.text = "0"
 
         }else{
+            // Only numbers are left, and a letter can be guessed
             view?.findViewById<TextView>(R.id.gamePhase)?.text = "Guess a letter!"
             gameMode = 1
         }
