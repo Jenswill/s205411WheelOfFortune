@@ -84,7 +84,7 @@
 
     </string-array>
 
-    /* Strings for xml files*/
+    /* Strings for xml files */
     <string name="wheel_of_fortune">Wheel of Fortune</string>
     <string name="play_game">Play Game</string>
     <string name="next_page">next page</string>
