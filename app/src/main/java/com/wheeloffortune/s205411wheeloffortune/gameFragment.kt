@@ -84,7 +84,7 @@ class gameFragment : Fragment() {
         // defines textview
         val textView = view?.findViewById<TextView>(R.id.wordString)
 
-
+        // creates a char array the hidden word
         val answerArray = wordToBeGuessed?.split("")
 
         //checks if the hidden word contains the guessed letter
@@ -100,6 +100,8 @@ class gameFragment : Fragment() {
 
             //Checks if the letter appears in the word
             if (answerArray != null) {
+                //The following for loop is made by using the code on the web-side
+                // https://kotlinlang.org/docs/control-flow.html#for-loops
                 for (i in answerArray.indices){
                         if (answerArray[i] != ""){
                             if (answerArray[i].equals(letter)){
@@ -113,7 +115,7 @@ class gameFragment : Fragment() {
 
 
                 }
-                //Revealing the letter
+                //Revealing the letter(s)
                 textView.text = newString
                 // updating how many points the player have
                 val ptsView : TextView? = view?.findViewById(R.id.points)
@@ -140,8 +142,9 @@ class gameFragment : Fragment() {
                 view?.let { Navigation.findNavController(it).navigate(R.id.navigateToGameLost) }
             }
         }
-
+        // Displays a text which tells the player to spin the wheel
         view?.findViewById<TextView>(R.id.gamePhase)?.text = "Spin the wheel!"
+        // Sets gamemode to spinning phase
         gameMode = 0
     }
 
@@ -195,22 +198,28 @@ class gameFragment : Fragment() {
         //https://stackoverflow.com/questions/42211527/getpackagename-in-fragment
         //https://stackoverflow.com/questions/42524916/is-it-possible-to-handle-r-array-string-array-name-through-a-string-variable-in
         //and modified
+
+        //Getting id for string array
         val id : Int? = context?.resources?.getIdentifier(category,"array",context?.packageName)
+        //Defines all words in category
         allWords = context?.resources?.getStringArray(id!!) as Array<String>
+
         return allWords
 
     }
 
     private fun getWordToBeGuessed(): String{
-
+        //Getting all words in current category
         val allWords = getAllWords(currentCategory!!)
-
+        // Returns a random word
         return getRandomString(0,allWords)
     }
 
     private fun hideWord(view :View){
         var hiddenString: String = ""
 
+        //The following for loop is made by using the code on the web-side
+        // https://kotlinlang.org/docs/control-flow.html#for-loops
         for (i in wordToBeGuessed?.split("")!!.indices){
             // Creates a string containing a "_ " for each letter in the hidden word
             if (wordToBeGuessed?.split("")!![i] != ""){
